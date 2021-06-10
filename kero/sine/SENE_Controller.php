@@ -27,6 +27,9 @@ abstract class SENE_Controller
 
     public $css_json = 'theme.json';
     public $js_json = 'script.json';
+    public $site_suffix = 'apptanya';
+    public $site_description = 'description';
+    public $site_author = 'apptanya';
 
     /**
      * For additional CSS
@@ -400,7 +403,7 @@ abstract class SENE_Controller
             trigger_error(TEM_ERR.': unable to load putBodyBefore for '.$v.'.php', E_USER_ERROR);
         }
     }
-    
+
     /**
      * Get JavaScript content injected from putBodyBefore
      */
