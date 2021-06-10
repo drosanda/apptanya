@@ -13,7 +13,7 @@ class Home extends SENE_Controller{
 		$this->setKeyword($this->site_author);
 		$this->putThemeContent("home/home",$data);
 		$this->putJsContent("home/home_bottom",$data);
-		$this->loadLayout("col-1",$data);
+		$this->loadLayout("col-2-left",$data);
 		$this->render();
 	}
 }
