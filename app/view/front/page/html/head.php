@@ -44,10 +44,10 @@ body, button, input, select, textarea {
   font-family: BlinkMacSystemFont,-apple-system,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 body {
-color: #333;
-font-size: 1em;
-font-weight: 400;
-line-height: 1.5;
+  color: #333;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
 }
 .hamburger{
  width: 30px;
@@ -291,6 +291,101 @@ code {
     padding: .25em .5em;
 }
 
+.navbar.navbar-top {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar.navbar-top > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #CAF7E3;
+  padding: 0.25em 0;
+}
+.navbar.navbar-top > div a {
+  display: block;
+  color: #ededed;
+  text-align: center;
+  padding: 6px 8px;
+  text-decoration: none;
+  font-size: 0.75em;
+  margin: 0 0.25em;
+}
+.navbar.navbar-top > div a:nth-child(1) {
+  background-color: #fafafa;
+  color: #111111;
+  border-radius: 25px;
+  width: 120px;
+}
+.navbar.navbar-top > div a:nth-child(2) {
+  background-color: transparent;
+  color: #111111;
+  content: "";
+}
+.navbar.navbar-top > div a:nth-child(3) {
+  color: #111111;
+  width: 30px;
+}
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar.navbar-bottom {
+  margin: 0;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em 1em;
+  margin-bottom: 2em;
+  box-sizing: border-box;
+}
+
+/* Place the navbar at the bottom of the page, and make it stick */
+.navbar.navbar-bottom > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #CAF7E3;
+  border-radius: 25px;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+}
+
+/* Style the links inside the navigation bar */
+.navbar.navbar-bottom div a {
+  display: block;
+  color: #111111;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 0 0.25em;
+}
+
+/* Change the color of links on hover */
+.navbar.navbar-bottom div a:hover {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Add a color to the active/current link */
+.navbar.navbar-bottom div a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.homepage {
+  background-color: #F8EDED;
+  min-height: 100vh;
+}
+.homepage > .mainbanner {
+  text-align: center;
+  padding-top: 2em;
+}
+
 @media screen and (max-width: 1024px){
   section, .section {
     padding: 2.5rem 1.5rem;
@@ -312,24 +407,33 @@ code {
     font-size: 2.2rem;
     border-size: 0.08em;
   }
+  .navbar.navbar-top > div a:nth-child(2) {
+    width: 120px;
+  }
 }
-    </style>
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "<?=base_url()?>"
-        },
-        "headline": "Seme Indonesia Address Provider Documentation API",
-        "datePublished": "2015-02-05T08:00:00+08:00",
-        "dateModified": "2015-02-05T09:20:00+08:00",
-        "author": {
-          "@type": "Person",
-          "name": "Daeng Rosanda"
-        },
-        "description": "API Documentation for using Indonesian address provider"
-      }
-    </script>
+
+@media screen and (max-width: 320px){
+  .navbar.navbar-top > div a:nth-child(2) {
+    width: 60px;
+  }
+}
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "<?=base_url()?>"
+      },
+      "headline": "Seme Indonesia Address Provider Documentation API",
+      "datePublished": "2015-02-05T08:00:00+08:00",
+      "dateModified": "2015-02-05T09:20:00+08:00",
+      "author": {
+        "@type": "Person",
+        "name": "Daeng Rosanda"
+      },
+      "description": "API Documentation for using Indonesian address provider"
+    }
+  </script>
 </head>
