@@ -70,8 +70,8 @@ $timezone = 'Asia/Jakarta';
 /* all var $core_* value in lower case string*/
 /* @var string */
 /****************************/
-$core_prefix = '';
-$core_controller = '';
+$core_prefix = 'ji_';
+$core_controller = 'controller';
 $core_model = '';
 
 /********************************/
@@ -116,6 +116,7 @@ $semevar['fcm']->appId = '';
 
 // example
 $semevar['site_name'] = 'Aplikasi Bertanya';
+$semevar['site_suffix'] = ' - Aplikasi Bertanya';
 $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';

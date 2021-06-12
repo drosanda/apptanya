@@ -7,7 +7,7 @@
  *
  * @codeCoverageIgnore
  */
-class NotFound extends SENE_Controller
+class NotFound extends JI_Controller
 {
     public function __construct()
     {
@@ -16,6 +16,8 @@ class NotFound extends SENE_Controller
     public function index()
     {
         header("HTTP/1.0 404 Not Found");
-        echo 'Notfound';
+        $data = $this->__init();
+    		$this->loadLayout("notfound",$data);
+    		$this->render();
     }
 }

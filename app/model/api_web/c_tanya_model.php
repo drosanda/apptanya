@@ -2,7 +2,7 @@
 class C_Tanya_Model extends SENE_Model{
 	var $tbl = 'c_tanya';
 	var $tbl_as = 'ct';
-	
+
 	public function __construct(){
 		parent::__construct();
 	}

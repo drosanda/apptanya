@@ -1,8 +1,8 @@
 <?php
-class C_Tanya_Model extends SENE_Model{
-	var $tbl = 'c_tanya';
-	var $tbl_as = 'ct';
-	
+class D_Notifikasi_Model extends SENE_Model{
+	var $tbl = 'd_notifikasi';
+	var $tbl_as = 'dn';
+
 	public function __construct(){
 		parent::__construct();
 	}
@@ -23,26 +23,27 @@ class C_Tanya_Model extends SENE_Model{
 		$this->db->where('id',$id);
 		return $this->db->update($this->tbl,$du);
 	}
+	public function updateReadByUserId($b_user_id){
+		$du = array('is_read'=>1);
+		$this->db->where('b_user_id',$b_user_id);
+		return $this->db->update($this->tbl,$du);
+	}
 	public function del($id){
 		$this->db->where("id",$id);
 		return $this->db->delete($this->tbl);
 	}
-	public function getCari($page=0, $pagesize=10, $sortCol='id', $sortDir='desc', $keyword=''){
+	public function getByUserId($b_user_id,$is_read=''){
+		$this->db->where('b_user_id',$b_user_id);
 		$this->db->from($this->tbl,$this->tbl_as);
-		if(strlen($keyword)){
-			$this->db->where('tanya',$keyword,'or','%like%',1,0);
-			$this->db->where('jawab',$keyword,'or','%like%',0,1);
-		}
-		$this->db->order_by($sortCol, $sortDir)->limit($page, $pagesize);
+		$this->db->order_by('is_read','ASC');
+		$this->db->order_by('id','DESC');
 		return $this->db->get();
 	}
-	public function countCari($keyword=''){
+	public function countByUserId($b_user_id,$is_read=''){
     $this->db->select_as("COUNT(*)",'total',0);
-		$this->db->from($this->tbl,$this->tbl_as);
-		if(strlen($keyword)){
-			$this->db->where('tanya',$keyword,'or','%like%',1,0);
-			$this->db->where('jawab',$keyword,'or','%like%',0,1);
-		}
+    $this->db->from($this->tbl,$this->tbl_as);
+    $this->db->where('b_user_id',$b_user_id);
+		if(strlen($is_read) == 1) $this->db->where('is_read',$is_read);
 		$d = $this->db->get_first();
     if(isset($d->total)) return $d->total;
     return 0;

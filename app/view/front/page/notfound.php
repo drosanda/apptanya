@@ -1,36 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+//Example 1 column layout
+?>
+<!doctype html>
+<html amp lang="en">
 <?php $this->getThemeElement("page/html/head",$__forward); ?>
 <?php $this->getBodyBefore(); ?>
 <body class="">
-  <!-- top -->
-  <?php $this->getThemeElement("page/html/topbar",$__forward); ?>
-  <!-- end top -->
+  <?php $this->getThemeElement("page/html/menu_left",$__forward);?>
+  <?php $this->getThemeElement("page/html/header",$__forward);?>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- main content -->
-        <div class="text-center" style="padding-top: 1vh;padding-bottom: 10vh;">
-          <h1 style="font-size: 14em; font-weight: 100; padding-bottom:0; margin-bottom: 0;">404</h1>
-          <p>The page you request currently unavailable or underconstruction.</p>
+  <div class="main-content">
+    <!-- main content-->
+    <div class="section">
+      <div class="column">
+        <div class="content">
+          <h1 class="text-center">Error 404</h1>
+          <p>Halaman yang anda cari tidak ditemukan</p>
+          <br>
+          <div class="form-group form-action">
+            <a href="<?=base_url()?>" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali </a>
+          </div>
         </div>
-        <!-- end of main content -->
       </div>
-
-
     </div>
-    <!--footer-->
-    <?php $this->getThemeElement('page/html/footer',$__forward); ?>
-    <!--end footer-->
+    <!-- main content-->
   </div>
-  <?php $this->getJsFooter(); ?>
 
+  <!--footer-->
+  <?php $this->getThemeElement('page/html/footer',$__forward); ?>
+  <!--end footer-->
+
+  <!-- load JS in footer-->
+  <?php $this->getJsFooter(); ?>
+  <!-- End load JS in footer-->
+
+  <!-- default JS Script-->
   <script>
   $(document).ready(function(e){
     <?php $this->getJsReady(); ?>
     <?php $this->getJsContent(); ?>
   });
   </script>
+  <!-- default JS Script-->
 </body>
 </html>

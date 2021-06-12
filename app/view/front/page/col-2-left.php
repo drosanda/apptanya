@@ -1,4 +1,3 @@
-
 <?php
 //Example 1 column layout
 ?>
