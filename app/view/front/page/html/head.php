@@ -1007,6 +1007,11 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
   font-weight: bold;
   font-size: inherit;
 }
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  box-shadow: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 .btn-default {
   background-color: #f5f2f0;

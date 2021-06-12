@@ -1,7 +1,8 @@
 <?php
 class C_Tanya_Model extends SENE_Model{
-	var $tbl = 'c_model';
-	var $tbl_as = 'ctm';
+	var $tbl = 'c_tanya';
+	var $tbl_as = 'ct';
+
 	public function __construct(){
 		parent::__construct();
 	}
@@ -25,5 +26,25 @@ class C_Tanya_Model extends SENE_Model{
 	public function del($id){
 		$this->db->where("id",$id);
 		return $this->db->delete($this->tbl);
+	}
+	public function getCari($page=0, $pagesize=10, $sortCol='id', $sortDir='desc', $keyword=''){
+		$this->db->from($this->tbl,$this->tbl_as);
+		if(strlen($keyword)){
+			$this->db->where('tanya',$keyword,'or','%like%',1,0);
+			$this->db->where('jawab',$keyword,'or','%like%',0,1);
+		}
+		$this->db->order_by($sortCol, $sortDir)->limit($page, $pagesize);
+		return $this->db->get();
+	}
+	public function countCari($keyword=''){
+    $this->db->select_as("COUNT(*)",'total',0);
+		$this->db->from($this->tbl,$this->tbl_as);
+		if(strlen($keyword)){
+			$this->db->where('tanya',$keyword,'or','%like%',1,0);
+			$this->db->where('jawab',$keyword,'or','%like%',0,1);
+		}
+		$d = $this->db->get_first();
+    if(isset($d->total)) return $d->total;
+    return 0;
 	}
 }

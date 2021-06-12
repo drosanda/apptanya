@@ -20,10 +20,10 @@
           <div class="form-group form-action">
             <a href="<?=base_url()?>" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali </a>
           </div>
-    <!-- main content-->
         </div>
       </div>
     </div>
+    <!-- main content-->
   </div>
 
   <!--footer-->
