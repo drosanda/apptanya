@@ -16,6 +16,9 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style amp-custom>
+  * {
+    outline: none;
+  }
   html {
 background-color: #fff;
 font-size: 20px;
@@ -318,6 +321,7 @@ code {
   color: #111111;
   border-radius: 25px;
   width: 120px;
+  font-weight: bolder;
 }
 .navbar.navbar-top > div a:nth-child(2) {
   background-color: transparent;
@@ -327,6 +331,38 @@ code {
 .navbar.navbar-top > div a:nth-child(3) {
   color: #111111;
   width: 30px;
+}
+
+.maintext {
+  position: absolute;
+  top: 20vh;
+  z-index: 2;
+  padding: 1em;
+}
+.bubble {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  background: #fff;
+  border-radius: 40px;
+  padding: 24px;
+  text-align: center;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 24px solid #fff;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #fff;
+  border-bottom: 20px solid transparent;
+  left: 32px;
+  bottom: -24px;
 }
 
 /* Place the navbar at the bottom of the page, and make it stick */
@@ -384,6 +420,101 @@ code {
 .homepage > .mainbanner {
   text-align: center;
   padding-top: 2em;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+.form-action {
+
+}
+.form-group.form-action {
+  display: block;
+}
+.form-group.form-action .btn {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0.25em;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.form-control {
+  display: block;
+  height: 34px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  padding: 4px 10px;
+  min-width: 100%;
+  border-color: #111111;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+input[type="text"].form-control, input[type="password"].form-control, input[type="email"].form-control, textarea.form-control {
+  -webkit-appearance: none;
+}
+
+.btn {
+  margin: 1px 0;
+  background-color: #ed6f75;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 16px;
+  line-height: 1.42857143;
+  border-radius: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: inherit;
+}
+.btn-default {
+  background-color: #f5f2f0;
+  color: #4a392b;
+}
+.btn-primary {
+  background-color: #E4BAD4;
+  color: #4a392b;
+}
+.btn-secondary {
+  background-color: #F6DFEB;
+  color: #4a392b;
+}
+.btn-success {
+  background-color: #CAF7E3;
+  color: #4a392b;
+}
+.btn-info {
+  background-color: #CAE1F7;
+  color: #4a392b;
+}
+.btn-warning {
+  background-color: #F7F3CA;
+  color: #4a392b;
+}
+.btn-danger {
+  background-color: #F7CACA;
+  color: #4a392b;
 }
 
 @media screen and (max-width: 1024px){

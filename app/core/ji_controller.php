@@ -4,7 +4,15 @@
 */
 class JI_Controller extends SENE_Controller
 {
+  public $user_login = 0;
+  public $admin_login = 0;
 
+  public function __construct()
+  {
+    parent::__construct();
+    $this->user_login = 0;
+    $this->admin_login = 0;
+  }
 
   public function __init()
   {

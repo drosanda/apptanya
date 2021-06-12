@@ -1,7 +1,7 @@
 <div class="navbar navbar-top">
   <div>
-    <a href="#home">AppTanya</a>
+    <a href="<?=base_url()?>">AppTanya</a>
     <a href="#">&nbsp;</a>
-    <a href="#"><i class="fa fa-bell-o"></i></a>
+    <a href="<?=base_url('notifikasi')?>"><i class="fa fa-bell-o"></i></a>
   </div>
 </div>

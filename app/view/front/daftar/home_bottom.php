@@ -6,30 +6,6 @@ function checkPassword(password){
 		return false;
 	}
 }
-$("#iokupansi").on('change',function(e){
-	e.preventDefault();
-	var kode = $('#iokupansi option:selected').attr('data-kode');
-	console.log(kode)
-	if(kode == 's1' || kode == 's2' || kode == 's3'){
-		var h = '';
-		h +=  '<label for="ijurusan">Jurusan/Fakultas/Bidang *</label><select name="a_kategori_id_jur" id="ijurusan" class="form-control">'
-		<?php if(is_array($jur)){
-			foreach ($jur as $j) {?>
-					h += '<option value="<?=$j->id?>"><?=$j->nama?></option>'
-		<?php	}
-		}	?>
-		h +=	'</select>'
-
-		$("#panel_jurusan").html(h);
-		$("#panel_jurusan").slideDown();
-	}else{
-		$("#panel_jurusan").slideUp();
-		$("#panel_jurusan").empty();
-	}
-})
-
-$("#iokupansi").trigger('change');
-
 $("#fdaftar").on('submit', function(e){
   e.preventDefault();
 	NProgress.start();

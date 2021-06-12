@@ -8,10 +8,15 @@ class Login extends JI_Controller
   }
   public function index()
   {
-    $data = array();
     $data = $this->__init();
+
+    if($this->user_login){
+      redir(base_url('profil'));
+      die();
+    }
+
     $this->setTitle('Login '.$this->config->semevar->site_suffix);
-    $this->setDescription("Silakan login untuk menikmati fasilitas bimbingan online gratis di ".$this->config->semevar->site_name);
+    $this->setDescription("Silakan login untuk bisa bertanya atau menjawab di ".$this->config->semevar->site_name);
     $this->setKeyword('Login');
 
     $this->putThemeContent("login/home",$data); //pass data to view
