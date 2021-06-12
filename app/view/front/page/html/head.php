@@ -870,17 +870,36 @@ code {
   color: #000;
   box-sizing: border-box;
 }
+.bubble-bottom-left {
+  background-color: #F6DFEB;
+}
 
 .bubble-bottom-left:before {
   content: "";
   width: 0px;
   height: 0px;
   position: absolute;
-  border-left: 24px solid #fff;
+  border-left: 24px solid #F6DFEB;
   border-right: 12px solid transparent;
-  border-top: 12px solid #fff;
+  border-top: 12px solid #F6DFEB;
   border-bottom: 20px solid transparent;
   left: 32px;
+  bottom: -24px;
+}
+
+.bubble-bottom-right {
+  background-color: #E4BAD4;
+}
+.bubble-bottom-right:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 24px solid transparent;
+  border-right: 12px solid #E4BAD4;
+  border-top: 12px solid #E4BAD4;
+  border-bottom: 20px solid transparent;
+  right: 32px;
   bottom: -24px;
 }
 
