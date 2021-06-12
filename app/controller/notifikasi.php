@@ -17,7 +17,8 @@ class Notifikasi extends JI_Controller
       die();
     }
 
-    $data['notifs'] = $this->dnm->getByUserId($data['sess']->user->id);
+    $data['data'] = $this->dnm->getByUserId($data['sess']->user->id);
+    $data['data'] = $this->dnm->countByUserId($data['sess']->user->id);
     $this->setTitle('Notifikasi - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Notifikasi ".$this->config->semevar->site_name);
     $this->setKeyword('Notifikasi');

@@ -27,4 +27,8 @@ class B_user_Model extends SENE_Model{
 		$this->db->where("id",$id);
 		return $this->db->delete($this->tbl);
 	}
+  public function getByEmail($email=""){
+    $this->db->where("email",$email);
+    return $this->db->get_first();
+  }
 }

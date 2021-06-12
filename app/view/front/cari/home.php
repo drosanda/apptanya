@@ -7,7 +7,7 @@
           <input id="ikeyword" type="text" class="form-control" name="keyword" placeholder="cth: dimana beli lele" minlength="1" required />
         </div>
         <div class="form-group form-action">
-          <button type="submit" class="btn btn-success btn-submit">Cari <i class="icon-submit fa fa-search"></i></button>
+          <button type="submit" class="btn btn-default btn-submit">Cari <i class="icon-submit fa fa-search"></i></button>
         </div>
       </form>
     </div>

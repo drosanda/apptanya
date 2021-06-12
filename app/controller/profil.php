@@ -17,7 +17,7 @@ class Profil extends JI_Controller
       redir(base_url('login'));
       die();
     }
-    $data['bum'] = $this->bum->getById($data['sess']->user->id);
+
     $this->setTitle('Profil - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Profil ".$this->config->semevar->site_name);
     $this->setKeyword('Profil');
