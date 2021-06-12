@@ -28,6 +28,18 @@
   $(document).ready(function(e){
     <?php $this->getJsReady(); ?>
     <?php $this->getJsContent(); ?>
+
+    NProgress.start();
+    $.get('<?=base_url('api_web/notif/count')?>').done(function(dt){
+      $("#notif_count").html('');
+      dt.data = Number(dt.data);
+      if(dt.status == 200 && dt.data>0){
+        $("#notif_count").html(dt.data);
+      }
+      NProgress.done();
+    }).fail(function(){
+      NProgress.done();
+    })
   });
   </script>
   <!-- default JS Script-->

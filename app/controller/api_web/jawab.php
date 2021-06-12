@@ -70,7 +70,7 @@ class Jawab extends JI_Controller
       $di = array();
       $di['b_user_id'] = $s['sess']->user->id;
       $di['c_tanya_id'] = $id;
-      $di['isi'] = 'Telah dijawab! Pertanyaan ->'.$data['data']->tanya;
+      $di['isi'] = 'Telah dijawab! "'.$data['data']->tanya.'"';
       $di['is_read'] = 0;
       $this->dnm->set($di);
     }else{

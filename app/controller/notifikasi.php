@@ -18,13 +18,16 @@ class Notifikasi extends JI_Controller
     }
 
     $data['data'] = $this->dnm->getByUserId($data['sess']->user->id);
-    $data['data'] = $this->dnm->countByUserId($data['sess']->user->id);
+    $data['count'] = $this->dnm->countByUserId($data['sess']->user->id);
+
+    $this->dnm->updateReadByUserId($data['sess']->user->id);
+    
     $this->setTitle('Notifikasi - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Notifikasi ".$this->config->semevar->site_name);
     $this->setKeyword('Notifikasi');
 
-    $this->putThemeContent("notifikas/home",$data); //pass data to view
-    $this->putJsContent("notifikas/home_bottom",$data); //pass data to view
+    $this->putThemeContent("notifikasi/home",$data); //pass data to view
+    $this->putJsContent("notifikasi/home_bottom",$data); //pass data to view
     $this->loadLayout("col-1",$data);
     $this->render();
   }

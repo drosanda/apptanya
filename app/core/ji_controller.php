@@ -4,6 +4,8 @@
 */
 class JI_Controller extends SENE_Controller
 {
+  public $status = 404;
+  public $message = 'Notfound';
   public $user_login = 0;
   public $admin_login = 0;
 
@@ -12,6 +14,8 @@ class JI_Controller extends SENE_Controller
     parent::__construct();
     $this->user_login = 0;
     $this->admin_login = 0;
+    $this->status = 404;
+    $this->message = 'Notfound';
   }
 
   public function __init()

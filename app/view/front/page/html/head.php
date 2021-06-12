@@ -1069,6 +1069,11 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
   font-weight: normal;
   line-height: 1.2;
 }
+.notifikasi-list {
+}
+.notifikasi-list .is-read {
+  opacity: 0.6;
+}
 
 @media screen and (max-width: 1024px){
   section, .section {

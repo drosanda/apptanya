@@ -42,6 +42,18 @@
 </div>
     <?php } ?>
 <?php } ?>
+<div class="section">
+  <div class="column">
+    <div class="content">
+      <p>Tidak menemukan jawaban yang anda cari?</p>
+
+      <div class="form-group form-action">
+        <a href="<?=base_url("tanyajawab")?>" class="btn btn-default">Buat Pertanyaan <i class="icon-submit fa fa-chevron-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</div>
 <br>
 <br>
 <br>

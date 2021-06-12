@@ -23,6 +23,11 @@ class D_Notifikasi_Model extends SENE_Model{
 		$this->db->where('id',$id);
 		return $this->db->update($this->tbl,$du);
 	}
+	public function updateReadByUserId($b_user_id){
+		$du = array('is_read'=>1);
+		$this->db->where('b_user_id',$b_user_id);
+		return $this->db->update($this->tbl,$du);
+	}
 	public function del($id){
 		$this->db->where("id",$id);
 		return $this->db->delete($this->tbl);
@@ -30,6 +35,8 @@ class D_Notifikasi_Model extends SENE_Model{
 	public function getByUserId($b_user_id,$is_read=''){
 		$this->db->where('b_user_id',$b_user_id);
 		$this->db->from($this->tbl,$this->tbl_as);
+		$this->db->order_by('is_read','ASC');
+		$this->db->order_by('id','DESC');
 		return $this->db->get();
 	}
 	public function countByUserId($b_user_id,$is_read=''){
