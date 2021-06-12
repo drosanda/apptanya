@@ -50,7 +50,7 @@ class User extends JI_Controller
 
     $di = $_POST;
 
-    if(strlen($di['email']) <= 4 || strlen($di['fnama']) <= 1 || strlen($di['telp']) <= 4){
+    if(strlen($di['email']) <= 4 || strlen($di['nama']) <= 1){
       $this->status = 401;
       $this->message = 'Salah satu parameter belum diisi';
       $this->__json_out($data);
@@ -73,32 +73,12 @@ class User extends JI_Controller
     }
 
     $di['password'] = md5($di['password']);
-    $di['cdate'] = 'NOW()';
 
     $res = $this->bum->set($di);
     if($res){
       $this->status = 200;
       $this->message = 'Berhasil';
       $user = $this->bum->getByEmail($di['email']);
-
-      if($this->email_send && strlen($user->email)>4 && empty($user->is_confirmed)){
-        $token_reg = $this->__genRegKode($user->id, $user->api_reg_token);
-        if ($this->email_send && strlen($email)>4) {
-          $nama = $user->fnama;
-          $replacer = array();
-          $replacer['site_name'] = $this->app_name;
-          $replacer['fnama'] = $nama;
-          $replacer['activation_link'] = $token_reg;
-          $this->seme_email->flush();
-          $this->seme_email->replyto($this->app_name, $this->site_replyto);
-          $this->seme_email->from($this->site_email, $this->app_name);
-          $this->seme_email->subject('Registrasi Berhasil');
-          $this->seme_email->to($email, $nama);
-          $this->seme_email->template('registration_after');
-          $this->seme_email->replacer($replacer);
-          $this->seme_email->send();
-        }
-      }
 
       //add to session
       $sess = $d['sess'];

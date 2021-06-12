@@ -24,9 +24,9 @@ $("#fdaftar").on('submit', function(e){
   var fd = $(this).serialize();
   $.post(url,fd).done(function(dt){
     if(dt.status == 200){
-      gritter('<h4>Berhasil daftar</h4><p>Selamat Datang</p>','success');
+      gritter('<h4>Berhasil daftar</h4><p>Selamat Datang di <?=$this->config->semevar->site_name.' version '.$this->config->semevar->site_version?></p>','success');
       setTimeout(function(){
-        window.location = '<?=base_url('')?>';
+        window.location = '<?=base_url('profil')?>';
       },1500)
     }else{
 			$('.btn-submit').prop('disabled',false);
