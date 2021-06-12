@@ -1,6 +1,6 @@
 <?php
 /**
- * Configuration file for Staging version
+ * Configuration file for Development version
  *   You can create one for:
  *   development.php
  *   staging.php
@@ -13,7 +13,7 @@
 /****************************/
 
 /**
- * Base URL with http:// or https:// prefix and trailing slash
+ * Site Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
 $site = "http://".$_SERVER['HTTP_HOST']."/";
@@ -24,43 +24,44 @@ $site = "http://".$_SERVER['HTTP_HOST']."/";
  *   - ORIG_PATH_INFO
  * @var string
  */
-$sene_method = "PATH_INFO";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
+$method = "REQUEST_URI";//REQUEST_URI,PATH_INFO,ORIG_PATH_INFO,
 /**
  * Admin Secret re-routing
  * this is alias for app/controller/admin/*
  * @var string
  */
-$admin_secret_url = 'adminmaster';
+$admin_secret_url = 'admin';
 /**
  * Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
-$cdn_url = "";
+$cdn_url = '';
 
 /********************************/
 /* == Database Configuration == */
 /* Database connection information */
 /* @var array of string */
 /********************************/
-$db['host']  = 'localhost';
-$db['user']  = 'root';
-$db['pass']  = '';
-$db['name']  = 'seme_framework';
+$db['host']  = '10.130.83.70';
+$db['user']  = 's3demo';
+$db['pass']  = 's3demo';
+$db['name']  = 's3demo_apptanya';
 $db['port'] = '3306';
-$db['charset'] = 'latin1';
+$db['charset'] = 'utf8mb4';
 $db['engine'] = 'mysqli';
+$db['enckey'] = '';
 
 /****************************/
 /* == Session Configuration == */
 /* @var string */
 /****************************/
-$saltkey = 'cenahMP$';
+$saltkey = 'appTania21';
 
 /********************************/
 /* == Timezone Configuration == */
-/* @function string */
+/* @var string */
 /****************************/
-date_default_timezone_set('Asia/Jakarta');
+$timezone = 'Asia/Jakarta';
 
 /********************************/
 /* == Core Configuration == */
@@ -114,8 +115,10 @@ $semevar['fcm']->messagingSenderId = '';
 $semevar['fcm']->appId = '';
 
 // example
-$semevar['site_name'] = 'Seme Framework';
+$semevar['site_name'] = 'Aplikasi Bertanya';
+$semevar['site_suffix'] = ' - Aplikasi Bertanya';
+$semevar['site_version'] = '1.0.0-beta';
 $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
-$semevar['app_name'] = 'Seme Framework';
-$semevar['app_logo'] = 'Seme Framework';
+$semevar['app_name'] = 'Aplikasi Bertanya';
+$semevar['app_logo'] = 'logo.png';
