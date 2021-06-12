@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 08:46 AM
+-- Generation Time: Jun 11, 2021 at 07:06 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `b_user` (
-  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
@@ -42,11 +42,24 @@ CREATE TABLE `b_user` (
 --
 
 CREATE TABLE `c_tanya` (
-  `id` int(11) NOT NULL,
+  `id_tanya` int(11) NOT NULL,
   `pertanyaan` varchar(255) NOT NULL,
   `tgl_tanya` datetime DEFAULT NULL,
   `jawab` varchar(255) NOT NULL,
   `tgl_jawab` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `d_notifikasi`
+--
+
+CREATE TABLE `d_notifikasi` (
+  `id_user` int(11) NOT NULL,
+  `id_notif` int(11) NOT NULL,
+  `isi_notif` varchar(255) NOT NULL,
+  `status` enum('1','0') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -57,13 +70,19 @@ CREATE TABLE `c_tanya` (
 -- Indexes for table `b_user`
 --
 ALTER TABLE `b_user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- Indexes for table `c_tanya`
 --
 ALTER TABLE `c_tanya`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_tanya`);
+
+--
+-- Indexes for table `d_notifikasi`
+--
+ALTER TABLE `d_notifikasi`
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -73,13 +92,19 @@ ALTER TABLE `c_tanya`
 -- AUTO_INCREMENT for table `b_user`
 --
 ALTER TABLE `b_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `c_tanya`
 --
 ALTER TABLE `c_tanya`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tanya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `d_notifikasi`
+--
+ALTER TABLE `d_notifikasi`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34568;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
