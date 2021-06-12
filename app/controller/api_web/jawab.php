@@ -10,6 +10,7 @@ class Jawab extends JI_Controller
     //$this->lib("seme_log");
     $this->load("api_web/b_user_model",'bum');
     $this->load("api_web/c_tanya_model",'ctm');
+    $this->load("api_web/d_notifikasi_model",'dnm');
   }
   public function index(){
     $data = array();
@@ -51,6 +52,8 @@ class Jawab extends JI_Controller
     }
 
     $du = array();
+    $du['b_user_id_jawab'] = $s['sess']->user->id;
+    $du['tgl_jawab'] = 'NOW()';
     $du['jawab'] = $this->input->post('jawab');
     if(strlen($du['jawab'])<=2){
       $this->status = 553;
@@ -63,6 +66,13 @@ class Jawab extends JI_Controller
     if($res){
       $this->status = 200;
       $this->message = "Jawaban berhasil disimpan ke database";
+
+      $di = array();
+      $di['b_user_id'] = $s['sess']->user->id;
+      $di['c_tanya_id'] = $id;
+      $di['isi'] = 'Telah dijawab! Pertanyaan ->'.$data['data']->tanya;
+      $di['is_read'] = 0;
+      $this->dnm->set($di);
     }else{
       $this->status = 554;
       $this->message = "Gagal menyimpan jawaban ke database";

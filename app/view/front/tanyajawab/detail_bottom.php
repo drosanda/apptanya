@@ -16,15 +16,21 @@ $('#fjawab').on('submit',function(e){
       if(dt.status == 200){
         gritter('<h4>Berhasil</h4><p>'+dt.message+'</p>','success');
         setTimeout(function(){
+          $('.btn-submit').prop('disabled',false);
+          $('.icon-submit').removeClass('fa-circle-o-notch');
+          $('.icon-submit').removeClass('fa-spin');
+          NProgress.done();
+
           window.location.reload();
         },5678)
       }else{
         gritter('<h4>Gagal</h4><p>['+dt.status+'] '+dt.message+'</p>','danger');
+        $('.btn-submit').prop('disabled',false);
+        $('.icon-submit').removeClass('fa-circle-o-notch');
+        $('.icon-submit').removeClass('fa-spin');
+        NProgress.done();
       }
-      $('.btn-submit').prop('disabled',false);
-      $('.icon-submit').removeClass('fa-circle-o-notch');
-      $('.icon-submit').removeClass('fa-spin');
-      NProgress.done();
+
     }).fail(function(){
       gritter('<h4>Error</h4><p>Tidak dapat menyimpan jawaban sekarang</p>','warning');
       $('.btn-submit').prop('disabled',false);

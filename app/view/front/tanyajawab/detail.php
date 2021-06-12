@@ -13,7 +13,7 @@
       <?php if($this->user_login){ ?>
       <form id="fjawab" method="post" class="form-horizontal">
         <div class="form-group">
-          <input id="ijawab" type="text" class="form-control" name="jawab" placeholder="Tulis Jawaban" minlength="2" required />
+          <input id="ijawab" type="text" class="form-control" name="jawab" placeholder="Tulis Jawaban" minlength="2" maxlength="254" required />
         </div>
         <div class="form-group form-action">
           <button type="submit" class="btn btn-success btn-submit">Simpan Jawaban <i class="icon-submit fa fa-check"></i></button>
