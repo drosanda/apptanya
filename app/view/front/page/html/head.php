@@ -16,31 +16,31 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style amp-custom>
-  * {
-    outline: none;
-  }
-  html {
-background-color: #fff;
-font-size: 20px;
--moz-osx-font-smoothing: antialiased;
--webkit-font-smoothing: antialiased;
-min-width: 300px;
-overflow-x: hidden;
-overflow-y: scroll;
-text-rendering: optimizeLegibility;
--webkit-text-size-adjust: 100%;
--moz-text-size-adjust: 100%;
--ms-text-size-adjust: 100%;
-text-size-adjust: 100%;
--webkit-tap-highlight-color: transparent;
+* {
+  outline: none;
+}
+html {
+  background-color: #fff;
+  font-size: 20px;
+  -moz-osx-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
-cursor: pointer;
-text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 a:hover, a:focus {
-text-decoration: underline;
+  text-decoration: underline;
 }
 
 body, button, input, select, textarea {
@@ -196,6 +196,10 @@ blockquote, body, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html
 
 .content amp-img {
   text-align: center;
+}
+
+.content p, .content p:not(:last-child) {
+  margin-bottom: 0.25em;
 }
 
 .breadcrumb {

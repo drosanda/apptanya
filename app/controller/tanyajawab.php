@@ -1,12 +1,17 @@
 <?php
-class TanyaJawab extends SENE_Controller{
+class TanyaJawab extends JI_Controller{
 
 	public function __construct(){
     parent::__construct();
 		$this->setTheme('front');
 	}
 	public function index(){
-		$data = array();
+    $data = $this->__init();
+
+    if(!$this->user_login){
+      redir(base_url('login'));
+      die();
+    }
 		$this->setTitle('Buat pertanyaan baru atau jawab pertanyaan yang sudah ada '.$this->site_suffix);
 		$this->setDescription('Buat pertanyaan baru atau jawab pertanyaan yang sudah ada di '.$this->config->semevar->site_name);
 		$this->setKeyword($this->config->semevar->site_name);
