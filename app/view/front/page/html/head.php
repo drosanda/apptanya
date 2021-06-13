@@ -1139,7 +1139,7 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
     width: 60px;
   }
   .bubble {
-    min-width: 260px;
+    min-width: 250px;
   }
 }
   </style>
