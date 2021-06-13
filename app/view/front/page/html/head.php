@@ -869,9 +869,10 @@ code {
   text-align: center;
   color: #000;
   box-sizing: border-box;
+  min-height: 24px;
 }
 .bubble-bottom-left {
-  background-color: #F6DFEB;
+  background-color: #fafafa;
 }
 
 .bubble-bottom-left:before {
@@ -879,16 +880,16 @@ code {
   width: 0px;
   height: 0px;
   position: absolute;
-  border-left: 24px solid #F6DFEB;
+  border-left: 24px solid #fafafa;
   border-right: 12px solid transparent;
-  border-top: 12px solid #F6DFEB;
+  border-top: 12px solid #fafafa;
   border-bottom: 20px solid transparent;
   left: 32px;
   bottom: -24px;
 }
 
 .bubble-bottom-right {
-  background-color: #E4BAD4;
+  background-color: #dcf8c6;
 }
 .bubble-bottom-right:before {
   content: "";
@@ -896,8 +897,8 @@ code {
   height: 0px;
   position: absolute;
   border-left: 24px solid transparent;
-  border-right: 12px solid #E4BAD4;
-  border-top: 12px solid #E4BAD4;
+  border-right: 12px solid #dcf8c6;
+  border-top: 12px solid #dcf8c6;
   border-bottom: 20px solid transparent;
   right: 32px;
   bottom: -24px;
@@ -913,6 +914,7 @@ code {
   padding: 0.5em 1em;
   margin-bottom: 2em;
   box-sizing: border-box;
+  z-index: 3;
 }
 
 /* Place the navbar at the bottom of the page, and make it stick */
@@ -1102,6 +1104,15 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
     font-size: 2.2rem;
     border-size: 0.09em;
   }
+  .bubble {
+    min-width: 980px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .bubble {
+    min-width: 690px;
+  }
 }
 
 @media screen and (max-width: 425px){
@@ -1118,11 +1129,17 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
   .navbar.navbar-top > div a:nth-child(2) {
     width: 120px;
   }
+  .bubble {
+    min-width: 340px;
+  }
 }
 
 @media screen and (max-width: 320px){
   .navbar.navbar-top > div a:nth-child(2) {
     width: 60px;
+  }
+  .bubble {
+    min-width: 280px;
   }
 }
   </style>

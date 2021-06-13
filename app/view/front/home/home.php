@@ -7,4 +7,7 @@
     <br>
     <div id="cursor2" class="bubble bubble-bottom-right" style="display: none;"></div>
   </div>
+  <br>
+  <br>
+  <br>
 </div>
