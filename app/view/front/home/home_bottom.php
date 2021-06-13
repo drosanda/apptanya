@@ -8,7 +8,7 @@ var i = 0;
 $('.maintext').html('');
 $.each(msgs,function(k,v){
   var h = '';
-  if(i%2==0){
+  if(i%2==1){
     var h = '<div class="bubble bubble-bottom-right" style="display: none;">'+v+'</div>';
   }else{
     var h = '<div class="bubble bubble-bottom-left" style="display: none;">'+v+'</div>';
