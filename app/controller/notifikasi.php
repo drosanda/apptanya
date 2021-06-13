@@ -14,14 +14,12 @@ class Notifikasi extends JI_Controller
 
     if(!$this->user_login){
       redir(base_url('login'));
-      die();
+      return;
     }
 
     $data['data'] = $this->dnm->getByUserId($data['sess']->user->id);
     $data['count'] = $this->dnm->countByUserId($data['sess']->user->id);
 
-    $this->dnm->updateReadByUserId($data['sess']->user->id);
-    
     $this->setTitle('Notifikasi - '.$this->config->semevar->site_name);
     $this->setDescription("Halaman Notifikasi ".$this->config->semevar->site_name);
     $this->setKeyword('Notifikasi');
@@ -30,5 +28,29 @@ class Notifikasi extends JI_Controller
     $this->putJsContent("notifikasi/home_bottom",$data); //pass data to view
     $this->loadLayout("col-1",$data);
     $this->render();
+  }
+  public function baca($id)
+  {
+    $data = array();
+    $data = $this->__init();
+
+    if(!$this->user_login){
+      redir(base_url('login'));
+      return;
+    }
+    $id = (int) $id;
+    if($id<=0){
+      redir(base_url('notfound'));
+      return;
+    }
+    $data['data'] = $this->dnm->getById($id);
+    if(!isset($data['data']->id)){
+      redir(base_url('notfound'));
+      return;
+    }
+    $du = array('is_read'=>1);
+    $this->dnm->update($id,$du);
+    redir(base_url('tanyajawab/detail/'.$data['data']->c_tanya_id.'/'));
+    return;
   }
 }

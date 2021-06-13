@@ -1093,7 +1093,7 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
 .notifikasi-list {
 }
 .notifikasi-list .is-read {
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 1024px){
