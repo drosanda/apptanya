@@ -50,6 +50,14 @@ class User extends JI_Controller
 
     $di = $_POST;
 
+    if(!isset($di['email'])) $di['email'] = '';
+    if(!isset($di['nama'])) $di['nama'] = '';
+    if(!isset($di['alamat'])) $di['alamat'] = '';
+
+    $di['email'] = strip_tags(trim($di['email']));
+    $di['nama'] = strip_tags(trim($di['nama']));
+    $di['alamat'] = strip_tags(trim($di['alamat']));
+
     if(strlen($di['email']) <= 4 || strlen($di['nama']) <= 1){
       $this->status = 401;
       $this->message = 'Salah satu parameter belum diisi';
