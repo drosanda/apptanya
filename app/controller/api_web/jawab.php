@@ -54,7 +54,7 @@ class Jawab extends JI_Controller
     $du = array();
     $du['b_user_id_jawab'] = $s['sess']->user->id;
     $du['tgl_jawab'] = 'NOW()';
-    $du['jawab'] = $this->input->post('jawab');
+    $du['jawab'] = strip_tags(trim($this->input->post('jawab')));
     if(strlen($du['jawab'])<=2){
       $this->status = 553;
       $this->message = "jawaban terlalu pendek";
