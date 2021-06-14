@@ -9,18 +9,36 @@
   beStrictAboutTodoAnnotatedTests="true"
   failOnRisky="true"
   failOnWarning="true"
-  verbose="true">
+  verbose="true"
+  colors="true">
   <testsuites>
     <testsuite name="Dev">
       <directory>dev/test</directory>
     </testsuite>
   </testsuites>
 
-  <coverage processUncoveredFiles="false">
+  <coverage
+    includeUncoveredFiles="true"
+    processUncoveredFiles="false"
+    pathCoverage="false"
+    ignoreDeprecatedCodeUnits="true"
+    disableCodeCoverageIgnore="false"
+  >
     <include>
-      <directory>app/view</directory>
-      <directory>app/model</directory>
-      <directory>app/controller</directory>
+      <directory>kero/sine/</directory>
+      <directory>app/core/</directory>
+      <directory>app/controller/</directory>
+      <directory>app/model/</directory>
+      <directory>app/view/</directory>
     </include>
+    <exclude>
+      <directory>kero/lib/</directory>
+    </exclude>
+    <report>
+      <clover outputFile="clover.xml"/>
+    </report>
   </coverage>
+  <logging>
+    <junit outputFile="junit.xml"/>
+  </logging>
 </phpunit>
