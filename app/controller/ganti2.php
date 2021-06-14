@@ -10,8 +10,8 @@ class Ganti2 extends JI_Controller
   {
     $data = $this->__init();
 
-    if($this->user_login){
-      redir(base_url('profil'));
+    if(!$this->user_login){
+      redir(base_url('login'));
       die();
     }
 

@@ -8,7 +8,7 @@
       <p><?=$sess->user->email?></p>
       <br>
       <div class="form-group form-action">
-        <button type="button" class="btn btn-default">Edit Profil <i class="icon-submit fa fa-pencil"></i></button>
+        <a href="<?=base_url("ganti2")?>" class="btn btn-default">Edit Profil <i class="icon-submit fa fa-pencil"></i></a>
         <a href="<?=base_url("logout")?>" class="btn btn-warning">Logout <i class="icon-submit fa fa-sign-out"></i></a>
       </div>
     </div>
