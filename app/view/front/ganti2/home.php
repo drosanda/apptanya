@@ -8,8 +8,11 @@
           <input id="iemal" type="text" class="form-control" name="email" placeholder="email" minlength="3" required />
         </div>
         <div class="form-group">
-          <label for="ijenis_kelamin" class="control-label">Jenis Kelamin *</label>
-          <input id="ijenis_kelamin" type="jenis_kelamin" class="form-control" name="jenis_kelamin" placeholder="jenis kelamin" required />
+          <label class="control-label" for="ijk">Jenis Kelamin </label>
+          <select id="ijk" name="jk" class="form-control">
+            <option value="1">Laki-laki</option>
+            <option value="0">Perempuan</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="ialamat" class="control-label">Alamat *</label>
