@@ -15,7 +15,7 @@ class Profil extends JI_Controller
 
     if(!$this->user_login){
       redir(base_url('login'));
-      die();
+      return false;
     }
 
     $this->setTitle('Profil - '.$this->config->semevar->site_name);

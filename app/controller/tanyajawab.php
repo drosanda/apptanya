@@ -11,7 +11,7 @@ class TanyaJawab extends JI_Controller{
 
     if(!$this->user_login){
       redir(base_url('login'));
-      die();
+      return false;
     }
 		$this->setTitle('Buat pertanyaan baru atau jawab pertanyaan yang sudah ada '.$this->site_suffix);
 		$this->setDescription('Buat pertanyaan baru atau jawab pertanyaan yang sudah ada di '.$this->config->semevar->site_name);
@@ -26,17 +26,17 @@ class TanyaJawab extends JI_Controller{
 
     if(!$this->user_login){
       redir(base_url('login'));
-      die();
+      return false;
     }
     $id = (int) $id;
     if($id<=0){
       redir(base_url('notfound'));
-      die();
+      return false;
     }
     $data['data'] = $this->ctm->getById($id);
     if(!isset($data['data']->id)){
       redir(base_url('notfound'));
-      die();
+      return false;
     }
 
 		$this->setTitle($data['data']->tanya.' '.$this->site_suffix);

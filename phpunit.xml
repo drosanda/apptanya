@@ -18,7 +18,6 @@
 
   <coverage processUncoveredFiles="false">
     <include>
-      <directory>kero/sine</directory>
       <directory>app/view</directory>
       <directory>app/model</directory>
       <directory>app/controller</directory>

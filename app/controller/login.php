@@ -12,7 +12,7 @@ class Login extends JI_Controller
 
     if($this->user_login){
       redir(base_url('profil'));
-      die();
+      return false;
     }
 
     $this->setTitle('Login '.$this->config->semevar->site_suffix);

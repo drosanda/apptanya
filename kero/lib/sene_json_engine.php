@@ -73,10 +73,12 @@ class SENE_JSON_Engine
   }
   public function out($data, $allowed="*")
   {
-    header("Access-Control-Allow-Origin: ".$allowed);
-    header("Access-Control-Allow-Header: ".$allowed);
-    header("Content-Type: application/json");
-    header("charset: utf-8");
+    if (!headers_sent()) {
+      header("Access-Control-Allow-Origin: ".$allowed);
+      header("Access-Control-Allow-Header: ".$allowed);
+      header("Content-Type: application/json");
+      header("charset: utf-8");
+    }
     $otp = $this->safe_json_encode($data);
     if(json_last_error()){
       $this->log(json_last_error_msg());

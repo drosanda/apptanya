@@ -60,7 +60,7 @@ class JI_Controller extends SENE_Controller
     $data["message"] = $this->message;
     $data["data"]  = $dt;
     $this->sene_json->out($data);
-    die();
+    return true;
   }
 
   /**
