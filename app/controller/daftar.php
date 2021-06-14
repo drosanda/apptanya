@@ -12,7 +12,7 @@ class Daftar extends JI_Controller
 
     if($this->user_login){
       redir(base_url('profil'));
-      die();
+      return false;
     }
 
     $this->setTitle('Daftar '.$this->config->semevar->site_suffix);

@@ -29,9 +29,8 @@ class User extends JI_Controller
       $this->status = 400;
       $this->message = "Harus Login";
       $this->__json_out($data);
-      die();
+      return false;
     }
-
 
     $this->status = 200;
     $this->message= 'Berhasil';
@@ -62,7 +61,7 @@ class User extends JI_Controller
       $this->status = 401;
       $this->message = 'Salah satu parameter belum diisi';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $user = $this->bum->getByEmail($di['email']);
@@ -70,14 +69,14 @@ class User extends JI_Controller
       $this->status = 402;
       $this->message = 'Email sudah digunakan. Silakan untuk login';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     if(strlen($di['password']) < 6){
       $this->status = 402;
       $this->message = 'Min. 6 Karakter, mengandung huruf dan angka';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $di['password'] = md5($di['password']);
@@ -110,7 +109,7 @@ class User extends JI_Controller
       $this->status = 808;
       $this->message = "Sudah Login";
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $email = $this->input->post("email");
@@ -125,20 +124,20 @@ class User extends JI_Controller
         $this->status = 1707;
         $this->message = 'Invalid email or password';
         $this->__json_out($data);
-        die();
+        return false;
       }
 
       if(!password_verify($password, $user->password)){
         $this->status = 1707;
         $this->message = 'Invalid email or password';
         $this->__json_out($data);
-        die();
+        return false;
       }
     }else{
       $this->status = 1708;
       $this->message = 'Email belum terdaftar. Silakan daftar terlebih dahulu';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     if ($this->email_send && strlen($user->email)>4 && empty($user->is_confirmed)) {
@@ -266,7 +265,7 @@ class User extends JI_Controller
       $this->message = 'Harus login';
       header("HTTP/1.0 400 Harus login");
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $du = $_POST;
@@ -279,7 +278,7 @@ class User extends JI_Controller
       $this->status = 426;
       $this->message = 'User with supplied ID not found';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $password_lama = $this->input->post('password_lama');
@@ -299,14 +298,14 @@ class User extends JI_Controller
       $this->status = 601;
       $this->message = 'Password lama salah';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     if(strlen($password_baru)<=4){
       $this->status = 427;
       $this->message = 'Password baru terlalu pendek';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $res = $this->bum->update($d['sess']->user->id, array('password'=>md5($password_baru)));

@@ -66,14 +66,14 @@ class Lupa extends JI_Controller
       $this->status = 401;
       $this->message = 'Sudah Login';
       $this->__json_out($data);
-      die();
+      return false;
     }
     $email = $this->input->request('email');
     if (strlen($email)<= 4){
       $this->status = 504;
       $this->message = 'Email tidak valid atau terlalu pendek';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $user = $this->bum->getByEmail($email);
@@ -82,7 +82,7 @@ class Lupa extends JI_Controller
         $this->status = 606;
         $this->message = 'Pengguna dengan email ini telah dinonaktifkan';
         $this->__json_out($data);
-        die();
+        return false;
       }
       if ($this->email_send) {
         $link = $this->__passwordGenerateLink($user->id);
@@ -109,7 +109,7 @@ class Lupa extends JI_Controller
       $this->status = 505;
       $this->message = 'Email belum terdaftar';
       $this->__json_out($data);
-      die();
+      return false;
     }
 
     $this->__json_out($data);

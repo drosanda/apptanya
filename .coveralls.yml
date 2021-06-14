@@ -1,4 +1,4 @@
-repo_token: lVbUbHbSJ1a9kfH52fHze8ps5LMVbLITl
+repo_token: IvUSBWt8w5R29UvCJ29fMOz0mkDsidzqh
 
 coverage_clover: dev/logs/clover.xml
 json_path: dev/logs/coveralls-upload.json
