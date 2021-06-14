@@ -14,9 +14,13 @@ before_script:
   - sudo mysql -u root --default-character-set=utf8 seme_framework < /home/travis/build/drosanda/apptanya/sql/apptanya_db.sql
 after_success:
     - bash <(curl -s https://codecov.io/bash)
-    # - sonar-scanner
+    - sonar-scanner
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - phpunit --configuration phpunit.xml --coverage-clover coverage.xml --log-junit junit.xml --testsuite Dev
 addons:
   mariadb: '10.3'
+  sonarcloud:
+    organization: "drosanda"
+    token:
+      secure: "4SU2ryOi1eTXmOXXuqq54Zdw+TL0YmrcdOo3gPAhHaGfNpsfUPUk4oEbwnrsCyUgXhkM6AWMw8DBZzte+N7V0GS67tBvt1dji9WB3DKo0DJZS7P2mMRnj1gwzMTJ7/EqTBRmw5n24yCTGf7errlZMh7twylQqTD27d9MOSduAQNUnr+N+G23qPddfEcbNzEbNsWVV177tpgtuojeBq7PC0t89Ez0ZRkMAsq22woClHnlYRrZVIZBDDXMkCsTWoPWUcwyF7UshEMFfb3iyTi68aMBxQBpabTPMx6dhw9kZG0RCo98Upm8kMWKfh0BMh7ATAFgTqzpnh6dhffXSVAUYAFPz1sOW7Tlq2k9U2ufuxboMrFaxmP/PnkfCWBREK+cwKLCPUjIS5FdxS78XwPxlFbgcGzfuefQUIaY7xVhYktmGqQOYlxhMPVyoocZVgw8xHt7EJrxHfRKsiJhr5q7uHE9kqBVbEwos9F0lD9Dm/+FrqmpgtJzCorUKSG6rACOMSxYtQM3odSDJiaJ+sD0wARtfHQGez9LigQcbtDS2Ct5ymC8jDcs41ZpYUkcpCB7XR2RMPOgLtiVu3WoccPjcPUDd230HRJSkF+qHXQPyxm+437NyBeOznOM+ZP3x5xaXU5SbclA4wh+u6akQk3flpx7tsCZltUkiQgHrry/n2I="
