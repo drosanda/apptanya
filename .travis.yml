@@ -1,5 +1,7 @@
 dist: xenial
 os: linux
+env:
+  - XDEBUG_MODE="coverage"
 language: php
 php:
   - '7.2.22'
