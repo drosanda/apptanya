@@ -12,7 +12,7 @@ before_script:
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS apptanya_db;'
   - sudo mysql -u root --default-character-set=utf8 apptanya_db < sql/apptanya_db.sql
   - sudo mysql -e 'SHOW DATABASES;'
-  - sudo mysql -u root 'SHOW DATABASES;'
+  - sudo mysql -u root -e 'SHOW DATABASES;'
 after_success:
     - bash <(curl -s https://codecov.io/bash)
     # - sonar-scanner
