@@ -1,5 +1,9 @@
 # Aplikasi Bertanya
-[![Build Status](https://travis-ci.com/drosanda/apptanya.svg?branch=main)](https://travis-ci.com/drosanda/apptanya) 
+[![Build Status](https://travis-ci.com/drosanda/apptanya.svg?branch=main)](https://travis-ci.com/drosanda/apptanya) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=drosanda_apptanya&metric=security_rating)](https://sonarcloud.io/dashboard?id=drosanda_apptanya) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=drosanda_apptanya&metric=bugs)](https://sonarcloud.io/dashboard?id=drosanda_apptanya) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=drosanda_apptanya&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=drosanda_apptanya)  [![codecov](https://codecov.io/gh/drosanda/apptanya/branch/main/graph/badge.svg?token=CS2Y9O7PFT)](https://codecov.io/gh/drosanda/apptanya)
+
+
+
+
 
 Aplikasi bertanya aplikasi untuk memberikan pertanyaan sehari-hari berbasis web.
 
