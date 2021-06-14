@@ -1,4 +1,5 @@
 # Aplikasi Bertanya
+[![Build Status](https://travis-ci.com/drosanda/apptanya.svg?branch=main)](https://travis-ci.com/drosanda/apptanya) 
 
 Aplikasi bertanya aplikasi untuk memberikan pertanyaan sehari-hari berbasis web.
 
