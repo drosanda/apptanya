@@ -8,6 +8,8 @@ php:
 before_script:
   - mkdir -p /home/travis/build/drosanda/apptanya/app/cache/
   - chmod 775 /home/travis/build/drosanda/apptanya/app/cache/
+  - rm /home/travis/build/drosanda/apptanya/app/config/production.php 
+  - cp -a /home/travis/build/drosanda/apptanya/app/config/development.php /home/travis/build/drosanda/apptanya/app/config/production.php
   - sudo mysql -e 'GRANT ALL PRIVILEGES ON * . * TO root@localhost; FLUSH PRIVILEGES;'
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS apptanya_db;'
   - sudo mysql -u root --default-character-set=utf8 apptanya_db < sql/apptanya_db.sql
