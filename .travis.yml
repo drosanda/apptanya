@@ -1,11 +1,13 @@
-dist: focal
+dist: xenial
 os: linux
 language: php
 php:
-  - '7.4'
+  - '7.2.22'
+  - '7.3.23'
+  - '7.4.15'
 before_script:
-  - mkdir -p /home/travis/build/drosanda/seme-framework/app/cache/
-  - chmod 775 /home/travis/build/drosanda/seme-framework/app/cache/
+  - mkdir -p /home/travis/build/drosanda/apptanya/app/cache/
+  - chmod 775 /home/travis/build/drosanda/apptanya/app/cache/
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS apptanya_db;'
   - sudo mysql -u root --default-character-set=utf8 apptanya_db < sql/apptanya_db.sql
 after_success:
