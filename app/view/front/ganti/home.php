@@ -1,7 +1,7 @@
 <div class="section">
   <div class="column">
     <div class="content">
-      <h1 class="text-center">Form Ganti Password</h1>
+      <h1 class="text-center">Reset Passwrod</h1>
       <form id="flogin" method="post" class="form-horizontal">
         <div class="form-group">
           <label for="iusername" class="control-label">Username *</label>
