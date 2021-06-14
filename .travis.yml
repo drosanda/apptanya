@@ -1,4 +1,6 @@
 language: php
+env:
+  - XDEBUG_MODE="coverage"
 php:
   - '7.2.22'
   - '7.3.23'
