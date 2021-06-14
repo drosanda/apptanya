@@ -8,8 +8,8 @@ php:
 before_script:
   - mkdir -p /home/travis/build/drosanda/apptanya/app/cache/
   - chmod 775 /home/travis/build/drosanda/apptanya/app/cache/
-  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS apptanya_db;'
-  - sudo mysql -u root --default-character-set=utf8 apptanya_db < /home/travis/build/drosanda/apptanya/sql/apptanya_db.sql
+  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS seme_framework;'
+  - sudo mysql -u root --default-character-set=utf8 seme_framework < /home/travis/build/drosanda/apptanya/sql/apptanya_db.sql
 after_success:
     - bash <(curl -s https://codecov.io/bash)
     # - sonar-scanner
