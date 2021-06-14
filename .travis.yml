@@ -2,9 +2,9 @@ dist: xenial
 os: linux
 language: php
 php:
-  - '7.2.22'
-  - '7.3.23'
-  - '7.4.15'
+  - '7.2.34'
+  - '7.3.27'
+  - '7.4.19'
 before_script:
   - mkdir -p /home/travis/build/drosanda/seme-framework/app/cache/
   - chmod 775 /home/travis/build/drosanda/seme-framework/app/cache/
