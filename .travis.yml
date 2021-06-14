@@ -1,19 +1,13 @@
-dist: xenial
-os: linux
-env:
-  - XDEBUG_MODE="coverage"
 language: php
 php:
-  - '7.4'
+  - '7.2.22'
+  - '7.3.23'
+  - '7.4.15'
 before_script:
   - mkdir -p /home/travis/build/drosanda/apptanya/app/cache/
   - chmod 775 /home/travis/build/drosanda/apptanya/app/cache/
-  - cp -a /home/travis/build/drosanda/apptanya/app/config/development.php /home/travis/build/drosanda/apptanya/app/config/staging.php
-  - sudo mysql -e 'GRANT ALL PRIVILEGES ON * . * TO root@localhost; FLUSH PRIVILEGES;'
   - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS apptanya_db;'
-  - sudo mysql -u root --default-character-set=utf8 apptanya_db < sql/apptanya_db.sql
-  - sudo mysql -e 'SHOW DATABASES;'
-  - sudo mysql -u root -e 'SHOW DATABASES;'
+  - sudo mysql -u root --default-character-set=utf8 apptanya_db < /home/travis/build/drosanda/apptanya/sql/apptanya_db.sql
 after_success:
     - bash <(curl -s https://codecov.io/bash)
     # - sonar-scanner
@@ -21,4 +15,4 @@ script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - phpunit --configuration phpunit.xml --coverage-clover coverage.xml --log-junit junit.xml --testsuite Dev
 addons:
-  mariadb: '10.2'
+  mariadb: '10.3'
