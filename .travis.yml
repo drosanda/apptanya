@@ -1,3 +1,5 @@
+dist: precise
+os: linux
 language: php
 php:
   - '7.2.22'
