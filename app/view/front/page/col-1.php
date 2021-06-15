@@ -6,7 +6,6 @@
 <?php $this->getThemeElement("page/html/head",$__forward); ?>
 <?php $this->getBodyBefore(); ?>
 <body class="">
-  <?php $this->getThemeElement("page/html/menu_left",$__forward);?>
   <?php $this->getThemeElement("page/html/header",$__forward);?>
 
   <div class="main-content">
