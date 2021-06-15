@@ -37,7 +37,7 @@
         "@type": "Person",
         "name": "Daeng Rosanda"
       },
-      "description": "APlikasi Bertanya, tempat bertanya dan mencari jawaban masalah sehari-hari"
+      "description": "Alikasi Bertanya, tempat bertanya dan mencari jawaban masalah sehari-hari"
     }
   </script>
 </head>
