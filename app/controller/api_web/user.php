@@ -218,7 +218,7 @@ class User extends JI_Controller
     }
 
     $bum = $this->bum->getByEmail($email);
-    if(isset($bum->email)){
+    if(isset($bum->email) && $email != $d['sess']->user->email){
       $this->status = 691;
       $this->message = "Email sudah digunakan";
       $this->__json_out($data);
