@@ -10,9 +10,9 @@ class Ganti extends JI_Controller
   {
     $data = $this->__init();
 
-    if($this->user_login){
-      redir(base_url('profil'));
-      die();
+    if(!$this->user_login){
+      redir(base_url('login'));
+      return false;
     }
 
     $this->setTitle('Ganti '.$this->config->semevar->site_suffix);

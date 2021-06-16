@@ -191,9 +191,10 @@ class User extends JI_Controller
     if(empty($nama)) $nama = '';
     $nama = strip_tags(trim($nama));
 
+    $email = $this->input->post("email");
     if(strlen($email)<=1){
       $this->status = 590;
-      $this->message = "Nama tidak valid";
+      $this->message = "Email tidak valid";
       $this->__json_out($data);
       return false;
     }

@@ -2,9 +2,19 @@ $('#fganti2').on('submit',function(e){
   e.preventDefault();
   var c = confirm('Apakah anda yakin?\n(Dengan bertanya anda menyetujui ketentuan layanan aplikasi ini)');
   if(c){
-    var x = $('#iganti2').val();
+    var x = $('#inama').val();
     if(x.length<=2){
-      gritter('<h4>Perhatian</h4><p>Silakan isi pertanyaan yang jelas</p>','info');
+      gritter('<h4>Perhatian</h4><p>Silakan ganti nama</p>','info');
+      return;
+    }
+    var x = $('#iemail').val();
+    if(x.length<=2){
+      gritter('<h4>Perhatian</h4><p>Silakan ganti email</p>','info');
+      return;
+    }
+    var y = $('#ialamat').val();
+    if(y.length<=2){
+      gritter('<h4>Perhatian</h4><p>Silakan ganti alamat</p>','info');
       return;
     }
 
@@ -21,7 +31,7 @@ $('#fganti2').on('submit',function(e){
           $('.icon-submit').removeClass('fa-spin');
           NProgress.done();
 
-          window.location = '<?=base_url('ganti2/detail/')?>'+dt.data.id;
+          window.location = '<?=base_url('ganti2/')?>';
         },5678)
       }else{
         gritter('<h4>Gagal</h4><p>['+dt.status+'] '+dt.message+'</p>','danger');
