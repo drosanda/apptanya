@@ -12,7 +12,7 @@ $('#fganti2').on('submit',function(e){
     $('.btn-submit').prop('disabled',true);
     $('.icon-submit').addClass('fa-circle-o-notch');
     $('.icon-submit').addClass('fa-spin');
-    $.post('<?=base_url('api_web/ganti2/baru/')?>',$(this).serialize()).done(function(dt){
+    $.post('<?=base_url('api_web/user/edit/')?>',$(this).serialize()).done(function(dt){
       if(dt.status == 200){
         gritter('<h4>Berhasil</h4><p>'+dt.message+'</p>','success');
         setTimeout(function(){
