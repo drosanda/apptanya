@@ -6,7 +6,7 @@ Aplikasi bertanya aplikasi untuk memberikan pertanyaan sehari-hari berbasis web.
 ## Demo
 For demo [apptanya.thecloudalert.com](https://apptanya.thecloudalert.com)
 
-## Local Instalation using XAMPP
+## Local Installation using XAMPP
 Make sure you are already installed and running XAMPP. Here is the steps:
 - Download source code and then extract to `XAMPP/htdocs/apptanya` or Clone this repository on `XAMPP/htdocs/`
 - open `localhost/phpmyadmin/` and create new database `apptanya_db`
