@@ -23,15 +23,17 @@ DROP TABLE IF EXISTS `b_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `b_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(3) unsigned NOT NULL AUTO_INCREMENT,
   `nama` varchar(78) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `password` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `jk` enum('L','P') DEFAULT NULL,
+  `api_web_token` varchar(64) DEFAULT NULL,
+  `is_active` int(1) unsigned NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `idx_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +42,7 @@ CREATE TABLE `b_user` (
 
 LOCK TABLES `b_user` WRITE;
 /*!40000 ALTER TABLE `b_user` DISABLE KEYS */;
-INSERT INTO `b_user` VALUES (1,'','drosanda@outlook.co.id','e10adc3949ba59abbe56e057f20f883e','Soreang','L'),(2,'Didin Jamaludin','didin@cenah.co.id','424b03fda56d63195b1c4944d6117ab5','Kp. Tegalkembang No 26 Rt 04 Rw 08 Kec. Kutawaringin Kab. Bandung Jawa Barat Indonesia (depan TK NURI)','L'),(3,'Ruli Royana Widuran','RuliRoyanaWidura@gmail.com','424b03fda56d63195b1c4944d6117ab5','Kp. Tegalkembang No 26 Rt 04 Rw 08 Kec. Kutawaringin Kab. Bandung Jawa Barat Indonesia (depan TK NURI)','L');
+INSERT INTO `b_user` VALUES (1,'','drosanda@outlook.co.id','e10adc3949ba59abbe56e057f20f883e','Soreang','L',NULL,1),(2,'Didin Jamaludin','didin@cenah.co.id','424b03fda56d63195b1c4944d6117ab5','Kp. Tegalkembang No 26 Rt 04 Rw 08 Kec. Kutawaringin Kab. Bandung Jawa Barat Indonesia (depan TK NURI)','L',NULL,1),(3,'Ruli Royana Widuran','RuliRoyanaWidura@gmail.com','424b03fda56d63195b1c4944d6117ab5','Kp. Tegalkembang No 26 Rt 04 Rw 08 Kec. Kutawaringin Kab. Bandung Jawa Barat Indonesia (depan TK NURI)','L',NULL,1),(4,'Daeng GMAIL','daengrosanda@gmail.com','defe12aad396f90e6b179c239de260d4','Kp. Tegalkembang RT 02/08','L','92MJGX53F60HMEEIGLX',1);
 /*!40000 ALTER TABLE `b_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,9 +54,9 @@ DROP TABLE IF EXISTS `c_tanya`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `c_tanya` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `b_user_id_tanya` int(11) DEFAULT NULL,
-  `b_user_id_jawab` int(11) DEFAULT NULL,
+  `id` int(6) unsigned NOT NULL AUTO_INCREMENT,
+  `b_user_id_tanya` int(3) unsigned DEFAULT NULL,
+  `b_user_id_jawab` int(3) unsigned DEFAULT NULL,
   `tanya` varchar(255) NOT NULL DEFAULT '',
   `tgl_tanya` datetime DEFAULT NULL,
   `jawab` varchar(255) NOT NULL,
@@ -63,8 +65,8 @@ CREATE TABLE `c_tanya` (
   KEY `fk_b_user_id_tanya` (`b_user_id_tanya`),
   KEY `fk_b_user_id_jawab` (`b_user_id_jawab`),
   KEY `idx_tanya` (`tanya`),
-  CONSTRAINT `c_tanya_ibfk_1` FOREIGN KEY (`b_user_id_jawab`) REFERENCES `b_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `c_tanya_ibfk_2` FOREIGN KEY (`b_user_id_tanya`) REFERENCES `b_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+  CONSTRAINT `fk_b_user_id_jawab` FOREIGN KEY (`b_user_id_jawab`) REFERENCES `b_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  CONSTRAINT `fk_b_user_id_tanya` FOREIGN KEY (`b_user_id_tanya`) REFERENCES `b_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -86,16 +88,16 @@ DROP TABLE IF EXISTS `d_notifikasi`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `d_notifikasi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `b_user_id` int(11) DEFAULT NULL,
-  `c_tanya_id` int(11) DEFAULT NULL,
+  `id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `b_user_id` int(3) unsigned DEFAULT NULL,
+  `c_tanya_id` int(6) unsigned DEFAULT NULL,
   `isi` varchar(255) NOT NULL DEFAULT '',
-  `is_read` int(1) NOT NULL DEFAULT 0,
+  `is_read` int(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `fk_b_user_id` (`b_user_id`),
   KEY `c_tanya_id` (`c_tanya_id`),
-  CONSTRAINT `d_notifikasi_ibfk_1` FOREIGN KEY (`b_user_id`) REFERENCES `b_user` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
-  CONSTRAINT `d_notifikasi_ibfk_2` FOREIGN KEY (`c_tanya_id`) REFERENCES `c_tanya` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
+  CONSTRAINT `fk_b_user_id` FOREIGN KEY (`b_user_id`) REFERENCES `b_user` (`id`) ON DELETE CASCADE ON UPDATE SET NULL,
+  CONSTRAINT `fk_c_tanya_id` FOREIGN KEY (`c_tanya_id`) REFERENCES `c_tanya` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=34573 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,7 +107,7 @@ CREATE TABLE `d_notifikasi` (
 
 LOCK TABLES `d_notifikasi` WRITE;
 /*!40000 ALTER TABLE `d_notifikasi` DISABLE KEYS */;
-INSERT INTO `d_notifikasi` VALUES (34568,1,8,'Telah dijawab! Pertanyaan ->Apakah kamu suka mencopet?',0),(34569,1,9,'Telah dijawab! Pertanyaan ->Siapakah nama asli Sule?',0),(34570,1,10,'Telah dijawab! Pertanyaan ->Siapakah Tatang Sutarman?',0),(34571,1,11,'Telah dijawab! \"Sule lahir dimana?\"',1),(34572,3,2,'Telah dijawab! \"Dimana kah beli Lele dumbo?\"',0);
+INSERT INTO `d_notifikasi` VALUES (34568,1,8,'Telah dijawab! Pertanyaan ->Apakah kamu suka mencopet?',0),(34569,1,9,'Telah dijawab! Pertanyaan ->Siapakah nama asli Sule?',0),(34570,1,10,'Telah dijawab! Pertanyaan ->Siapakah Tatang Sutarman?',1),(34571,1,11,'Telah dijawab! \"Sule lahir dimana?\"',1),(34572,3,2,'Telah dijawab! \"Dimana kah beli Lele dumbo?\"',0);
 /*!40000 ALTER TABLE `d_notifikasi` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -118,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-14  8:26:31
+-- Dump completed on 2021-09-25 23:18:52

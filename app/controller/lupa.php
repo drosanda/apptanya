@@ -89,7 +89,7 @@ class Lupa extends JI_Controller
         $this->lib('seme_email');
 
         $replacer = array();
-        $replacer['fnama'] = $user->fnama;
+        $replacer['fnama'] = $user->nama;
         $replacer['site_name'] = $this->config->semevar->site_name;
         $replacer['site_name1'] = $this->config->semevar->site_name;
         $replacer['reset_link'] = $link;
@@ -98,7 +98,7 @@ class Lupa extends JI_Controller
         $this->seme_email->replyto($this->config->semevar->site_name, $this->config->semevar->email_reply);
         $this->seme_email->from($this->config->semevar->email_from, $this->config->semevar->site_name);
         $this->seme_email->subject('Forgot Password');
-        $this->seme_email->to($user->email, $user->fnama);
+        $this->seme_email->to($user->email, $user->nama);
         $this->seme_email->template('account_forgot');
         $this->seme_email->replacer($replacer);
         $this->seme_email->send();
