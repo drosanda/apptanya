@@ -16,7 +16,7 @@
  * Site Base URL with http:// or https:// prefix and trailing slash
  * @var string
  */
-$site = "http://".$_SERVER['HTTP_HOST']."/apptanya/";
+$site = "http://".$_SERVER['HTTP_HOST']."/drosanda/apptanya/";
 /**
  * URL parse method
  *   - REQUEST_URI, suitable for Nginx
@@ -55,7 +55,7 @@ $db['enckey'] = '';
 /* == Session Configuration == */
 /* @var string */
 /****************************/
-$saltkey = 'appTania21';
+$saltkey = 'appTania24';
 
 /********************************/
 /* == Timezone Configuration == */
@@ -72,7 +72,7 @@ $timezone = 'Asia/Jakarta';
 /****************************/
 $core_prefix = 'ji_';
 $core_controller = 'controller';
-$core_model = '';
+$core_model = 'model';
 
 /********************************/
 /* == Controller Configuration == */
@@ -117,8 +117,10 @@ $semevar['fcm']->appId = '';
 // example
 $semevar['site_name'] = 'Aplikasi Bertanya';
 $semevar['site_suffix'] = ' - Aplikasi Bertanya';
-$semevar['site_version'] = '1.0.0-dev';
+$semevar['site_version'] = '1.1.0-dev';
 $semevar['email_from'] = 'noreply@thecloudalert.com';
 $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';
 $semevar['app_logo'] = 'logo.png';
+
+$semevar['auto_login_after_register'] = false;
