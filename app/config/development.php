@@ -123,4 +123,6 @@ $semevar['email_reply'] = 'hi@thecloudalert.com';
 $semevar['app_name'] = 'Aplikasi Bertanya';
 $semevar['app_logo'] = 'logo.png';
 
+$semevar['media_user'] = 'media/user';
+
 $semevar['auto_login_after_register'] = false;
