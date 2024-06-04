@@ -18,29 +18,34 @@ class JI_Controller extends \SENE_Controller
     $this->message = 'Notfound';
   }
 
-  public function __init()
+  private function initiate_session()
   {
-    $data = array();
-    $sess = $this->getKey();
-    if (!is_object($sess)) {
-      $sess = new stdClass();
+    $session = $this->getKey();
+    if (!is_object($session)) {
+      $session = new stdClass();
     }
-    if (!isset($sess->user)) {
-      $sess->user = new stdClass();
+    if (!isset($session->user)) {
+      $session->user = new stdClass();
     }
-    if (isset($sess->user->id)) {
+    if (isset($session->user->id)) {
       $this->user_login = 1;
     }
 
-    if (!isset($sess->admin)) {
-      $sess->admin = new stdClass();
+    if (!isset($session->admin)) {
+      $session->admin = new stdClass();
     }
-    if (isset($sess->admin->id)) {
+    if (isset($session->admin->id)) {
       $this->admin_login = 1;
     }
 
-    $data['sess'] = $sess;
-    $data['produk_kategori'] = array();
+    return $session;
+  }
+
+  protected function initialize_data()
+  {
+    $data = array();
+    $data['sess'] = $this->initiate_session();
+
     return $data;
   }
 
@@ -161,6 +166,60 @@ class JI_Controller extends \SENE_Controller
   public function is_auto_login_after_register()
   {
     return $this->config_semevar('auto_login_after_register', false);
+  }
+
+  public function display_picture_src($display_picture_src = '', $default = 'media/user/default.png')
+  {
+    $display_picture_src = is_null($display_picture_src) ? '' : $display_picture_src;
+    if (strlen($display_picture_src)  > 4) {
+      $display_picture_src = $this->cdn_url($display_picture_src);
+    } else {
+      $display_picture_src = $default;
+    }
+    
+    return $display_picture_src;
+  }
+
+  public function rating_to_html_stars($rating_value)
+  {
+    $html = '';
+    $rating_value = intval($rating_value);
+    if ($rating_value > 0) {
+      for($i=0; $i<5; $i++) {
+        $color = '';
+        if ($i < $rating_value) {
+          $color = 'gold';
+        } else {
+          $color = 'grey';
+        }
+        $html .= '<i class="fa fa-star" style="color: '.$color.';"></i>';
+      }
+    } else if ($rating_value < 0){
+      for($i=0; $i>-5; $i--) {
+        $color = '';
+        if ($rating_value < $i) {
+          $color = 'red';
+        } else {
+          $color = 'black';
+        }
+        $html .= '<i class="fa fa-star" style="color: '.$color.';"></i>';
+      }
+    } else {
+      $html = '<small>Belum ada voting</small>';
+    }
+
+    return $html;
+  }
+
+  public function rating_to_html($rating_value, $mode='positive')
+  {
+    if ($mode == 'positive' && $rating_value > 0) {
+      return number_format($rating_value, 0, ',', '.');
+    } else if ($mode != 'positive' && $rating_value < 0) {
+      return number_format(abs($rating_value), 0, ',', '.');
+    } else {
+      return '';
+    }
   }
 
   /**

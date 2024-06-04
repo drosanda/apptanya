@@ -7,7 +7,7 @@
  *
  * @codeCoverageIgnore
  */
-class NotFound extends JI_Controller
+class NotFound extends \JI_Controller
 {
     public function __construct()
     {
@@ -16,8 +16,9 @@ class NotFound extends JI_Controller
     public function index()
     {
         header("HTTP/1.0 404 Not Found");
-        $data = $this->__init();
-    		$this->loadLayout("notfound",$data);
-    		$this->render();
+        $data = $this->initialize_data();
+        $this->setTitle('Error 404: Not Found '. $this->config_semevar('site_title_suffix', ''));
+        $this->loadLayout("notfound",$data);
+        $this->render();
     }
 }

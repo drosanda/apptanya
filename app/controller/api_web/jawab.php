@@ -23,7 +23,7 @@ class Jawab extends \JI_Controller
     }
     public function pertanyaan($id)
     {
-        $session = $this->__init();
+        $session = $this->initialize_data();
         $data = array();
 
         if(!$this->user_login) {
@@ -72,6 +72,7 @@ class Jawab extends \JI_Controller
         if($res) {
             $this->status = 200;
             $this->message = "Jawaban berhasil disimpan ke database";
+            $this->update_jawaban_count($id);
             $this->create_notification($session, $id, $data);
         } else {
             $this->status = 554;
@@ -90,5 +91,12 @@ class Jawab extends \JI_Controller
       $di['is_read'] = 0;
 
       return $this->dnm->set($di);
+    }
+
+    private function update_jawaban_count($id)
+    {
+      $du = array();
+      $du['jawaban_count'] = $this->djm->count_jumlah_jawaban($id);
+      return $this->ctm->update($id, $du);
     }
 }
