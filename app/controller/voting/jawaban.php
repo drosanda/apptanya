@@ -20,6 +20,7 @@ class Jawaban extends \JI_Controller
     $this->load('front/b_user_model', 'bum');
     $this->load('front/c_tanya_model', 'ctm');
     $this->load('front/d_jawab_model', 'djm');
+    $this->load('front/d_notifikasi_model', 'dnm');
     $this->load('front/e_voting_model', 'evm');
 
     $this->evm_value = new \stdClass();
@@ -68,17 +69,66 @@ class Jawaban extends \JI_Controller
 
     return false;
   }
+
+  private function set_best_answer($c_tanya_id)
+  {
+    $djm = new \stdClass();
+    $best_answer = $this->evm->best($c_tanya_id);
+    if (isset($best_answer->d_jawab_id)) {
+      $djm = $this->djm->id($best_answer->d_jawab_id);
+    }
+    if (isset($djm->jawaban)) {
+      $this->answer_got_voted($c_tanya_id, $djm->b_user_id_jawab);
+      $this->ctm->set_best_answer($c_tanya_id, $djm->b_user_id_jawab, $djm->jawaban);
+    }
+  }
   
-  private function voting_save($data, $id, $jawaban_id, $nilai)
+  private function voting_set($data, $c_tanya_id, $jawaban_id, $nilai)
   {
     $di = array();
-    $di['c_tanya_id'] = $id;
+    $di['c_tanya_id'] = $c_tanya_id;
     $di['d_jawab_id'] = $jawaban_id;
     $di['created_at'] = 'NOW()';
     $di['b_user_id'] = $data['sess']->user->id;
     $di['nilai'] = $nilai;
 
     return $this->evm->set($di);
+  }
+
+  private function answer_got_voted($c_tanya_id, $b_user_id_jawab)
+  {
+    $di = array();
+    $di['b_user_id'] = $b_user_id_jawab;
+    $di['c_tanya_id'] = $c_tanya_id;
+    $di['isi'] = 'Ada yang voting jawaban kamu!';
+    $di['is_read'] = 0;
+
+    return $this->dnm->set($di);
+  }
+
+  private function answered_notification($c_tanya_id)
+  {
+    $ctm = $this->ctm->id($c_tanya_id);
+    if (!isset($ctm->id)) {
+      return false;
+    }
+    
+    $di = array();
+    $di['b_user_id'] = $ctm->b_user_id_tanya;
+    $di['c_tanya_id'] = $c_tanya_id;
+    $di['isi'] = 'Pertanyaan kamu udah ada yang jawab!';
+    $di['is_read'] = 0;
+
+    return $this->dnm->set($di);
+  }
+  
+  private function voting_save($data, $c_tanya_id, $jawaban_id, $nilai)
+  {
+    $this->voting_set($data, $c_tanya_id, $jawaban_id, $nilai);
+    $this->set_best_answer($c_tanya_id);
+    $this->answered_notification($c_tanya_id);
+
+    return true;
   }
   
   private function voting_delete()

@@ -2,9 +2,9 @@ name: PHP Lint Check
 
 on:
   push:
-    branches: [ "beta" ]
+    branches: [ "main", "beta" ]
   pull_request:
-    branches: [ "beta" ]
+    branches: [ "main", "beta" ]
 
 permissions:
   contents: read
@@ -12,9 +12,14 @@ permissions:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ${{ matrix.os }}
 
+    strategy:
+      matrix:
+        os: [self-hosted, ubuntu-latest]
+        
     steps:
+
     - name: Checkout code
       uses: actions/checkout@v4
       
@@ -22,8 +27,11 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '7.4'
-    
-    - name: Run PHP linting
+
+    - name: PHP lint
       run: |
-        find . -type f -name "*.php" -exec /usr/bin/php -l {} \;
-        
+        lint_errors=$(find app -type f -name "*.php" -exec php -l {} \; 2>&1)
+        echo "$lint_errors"
+        if grep -q "Parse error" <<< "$lint_errors"; then
+          exit 1
+        fi
