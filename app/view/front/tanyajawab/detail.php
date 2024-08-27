@@ -48,7 +48,7 @@
           <!-- Form -->
           <div class="block-top block-content-mini-padding">
             <form id="fjawab" action="<?=base_url()?>" method="post" onsubmit="return false;">
-              <textarea id="ijawab" name="jawab" class="form-control push-bit" rows="3" placeholder="Tulis jawaban atas pertanyaan ini.." minlength="2" maxlength="254" required></textarea>
+              <textarea id="ijawab" name="jawab" class="form-control push-bit" rows="3" placeholder="Tulis jawaban atas pertanyaan ini.." minlength="2" maxlength="8192" required></textarea>
               <div class="clearfix">
                 <button type="submit" class="btn btn-sm btn-primary btn-submit pull-right">Berikan jawaban <i class="fa fa-send icon-submit"></i> </button>
               </div>
