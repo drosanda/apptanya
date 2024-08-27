@@ -64,7 +64,7 @@ class Jawab extends \JI_Controller
 		$di['c_tanya_id'] = $c_tanya_id;
 		$di['b_user_id_jawab'] = $session['sess']->user->id;
 		$di['created_at'] = 'NOW()';
-		$di['jawaban'] = strip_tags(trim($this->input->post('jawab')));
+		$di['jawaban'] = htmlspecialchars(trim($this->input->post('jawab')));
 		if(strlen($di['jawaban']) <= 2) {
 			$this->status = 553;
 			$this->message = "jawaban terlalu pendek";

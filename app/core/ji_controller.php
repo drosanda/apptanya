@@ -222,6 +222,45 @@ class JI_Controller extends \SENE_Controller
     }
   }
 
+  public function parse_markdown_code($text)
+  {
+      $text = preg_replace('/```(.*?)```/s', '<pre><code>$1</code></pre>', $text);
+      $text = preg_replace('/`(.*?)`/', '<code>$1</code>', $text);
+
+      return $text;
+  }
+
+  public function parse_markdown_process($text)
+  {
+    $text = preg_replace('/^###### (.*)$/m', '<h6>$1</h6>', $text);
+    $text = preg_replace('/^##### (.*)$/m', '<h5>$1</h5>', $text);
+    $text = preg_replace('/^#### (.*)$/m', '<h4>$1</h4>', $text);
+    $text = preg_replace('/^### (.*)$/m', '<h3>$1</h3>', $text);
+    $text = preg_replace('/^## (.*)$/m', '<h2>$1</h2>', $text);
+    $text = preg_replace('/^# (.*)$/m', '<h1>$1</h1>', $text);
+
+    // Convert bold
+    $text = preg_replace('/\*\*(.*)\*\*/U', '<strong>$1</strong>', $text);
+
+    // Convert italic
+    $text = preg_replace('/\*(.*)\*/U', '<em>$1</em>', $text);
+
+    // Convert links
+    $text = preg_replace('/\[(.*)\]\((.*)\)/U', '<a href="$2">$1</a>', $text);
+
+    // Convert line breaks
+    // $text = nl2br($text);
+
+    return $text;
+  }
+  public function parse_markdown($text)
+  {
+    $text = $this->parse_markdown_process($text);
+    $text = $this->parse_markdown_code($text);
+
+    return $text;
+  }
+
   /**
   * Abstract layer for bootstraping class or onboarding class
   *   this is *required*

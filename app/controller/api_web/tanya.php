@@ -31,7 +31,7 @@ class Tanya extends JI_Controller
 
     $di = array();
     $di['b_user_id_tanya'] = $s['sess']->user->id;
-    $di['tanya'] = strip_tags(trim($this->input->post('tanya')));
+    $di['tanya'] = htmlspecialchars(trim($this->input->post('tanya')));
     $di['tgl_tanya'] = 'NOW()';
     $di['jawab'] = '';
     $du['tgl_jawab'] = 'NOW()';

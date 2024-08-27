@@ -17,7 +17,7 @@
               <strong><a href="<?=base_url('tanyajawab/detail/'.$v->id)?>"><?=$v->nama?></a> bertanya.</strong>
             </p>
             <p><?=$v->tanya?></p>
-            <a href="<?=base_url('tanyajawab/detail/'.$v->id)?>" class="btn btn-xs btn-primary"><i class="fa fa-people"></i> <?=$v->jawaban_count?> jawaban</a>
+            <a href="<?=base_url('tanyajawab/detail/'.$v->id)?>" class="btn btn-xs btn-info"><i class="fa fa-people"></i> <?=$v->jawaban_count?> jawaban</a>
             <a href="<?=base_url('tanyajawab/detail/'.$v->id)?>" class="btn btn-xs btn-default"><?=$this->rating_to_html_stars($v->rating)?></a>
           </div>
         </div>
