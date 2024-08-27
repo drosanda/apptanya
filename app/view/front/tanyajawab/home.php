@@ -9,7 +9,7 @@
           <input id="itanya" type="text" class="form-control" name="tanya" placeholder="Tulis Pertanyaan" minlength="2" maxlength="254" required />
         </div>
         <div class="form-group form-action">
-          <button type="submit" class="btn btn-success btn-submit">Simpan Pertanyaan <i class="icon-submit fa fa-check"></i></button>
+          <button type="submit" class="btn btn-primary btn-submit">Simpan Pertanyaan <i class="icon-submit fa fa-check"></i></button>
         </div>
       </form>
     </div>

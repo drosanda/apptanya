@@ -15,7 +15,7 @@
             <strong><a href="#"><?=$data->penanya->nama?></a> bertanya.</strong>
           </p>
           <p><?=$data->tanya?></p>
-          <a href="<?=base_url('voting/pertanyaan/like/'.$data->id)?>" class="btn btn-xs btn-success"><?=$this->rating_to_html($data->rating, 'positive')?> Vote <i class="fa fa-thumbs-up"></i></a>
+          <a href="<?=base_url('voting/pertanyaan/like/'.$data->id)?>" class="btn btn-xs btn-primary"><?=$this->rating_to_html($data->rating, 'positive')?> Vote <i class="fa fa-thumbs-up"></i></a>
           <a href="<?=base_url('voting/pertanyaan/dislike/'.$data->id)?>" class="btn btn-xs btn-danger"><?=$this->rating_to_html($data->rating, 'negative')?> Vote <i class="fa fa-thumbs-down"></i></a>
                     <a href="<?=base_url('voting/pertanyaan/neutral/'.$data->id)?>" class="btn btn-xs btn-default">Vote <i class="fa fa-minus"></i></a>
 
@@ -31,7 +31,7 @@
                     <a href="#"><strong><?=$v->nama?></strong></a>
                     <span class="text-muted"><small><em><?=$this->__dateIndonesia($v->created_at, 'hari_tanggal_jam')?></em></small></span>
                     <p><?=$v->jawaban?></p>
-                    <a href="<?=base_url('voting/jawaban/like/'.$data->id.'/'.$v->id)?>" class="btn btn-xs btn-success"><?=$this->rating_to_html($v->rating, 'positive')?> Vote <i class="fa fa-thumbs-up"></i></a>
+                    <a href="<?=base_url('voting/jawaban/like/'.$data->id.'/'.$v->id)?>" class="btn btn-xs btn-primary"><?=$this->rating_to_html($v->rating, 'positive')?> Vote <i class="fa fa-thumbs-up"></i></a>
                     <a href="<?=base_url('voting/jawaban/dislike/'.$data->id.'/'.$v->id)?>" class="btn btn-xs btn-danger"><?=$this->rating_to_html($v->rating, 'negative')?> Vote <i class="fa fa-thumbs-down"></i></a>
                     <a href="<?=base_url('voting/jawaban/neutral/'.$data->id.'/'.$v->id)?>" class="btn btn-xs btn-default">Vote <i class="fa fa-minus"></i></a>
                   </div>
