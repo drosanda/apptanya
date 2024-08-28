@@ -2,7 +2,7 @@
 <div class="section">
   <div class="column">
     <div class="content">
-      <div class="media">
+      <div class="media" style="margin-bottom: 10vh;">
         <a href="#" class="pull-left">
           <img src="<?=$this->display_picture_src($data->penanya->display_picture, 'https://skin.cenah.co.id/img/placeholders/avatars/avatar3.jpg')?>" alt="Foto profil <?=$data->penanya->nama?>" class="img-circle"  style="width: 64px; height: 64px;">
         </a>
