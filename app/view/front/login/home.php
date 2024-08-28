@@ -12,7 +12,7 @@
           <input id="ipassword" type="password" class="form-control" name="password" placeholder="password" required />
         </div>
         <div class="form-group form-action">
-          <button type="submit" class="btn btn-primary btn-submit">Login <i class="icon-submit fa fa-sign-in"></i></button>
+          <button type="submit" class="btn btn-info btn-submit">Login <i class="icon-submit fa fa-sign-in"></i></button>
           <a href="<?=base_url("lupa")?>" class="btn btn-danger">Lupa Password <i class="icon-submit fa fa-question-circle"></i></a>
           <a href="<?=base_url("daftar")?>" class="btn btn-default">Daftar <i class="icon-submit fa fa-yelp"></i></a>
         </div>

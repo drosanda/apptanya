@@ -26,7 +26,7 @@ p, .table, .alert, .carousel {
     margin-bottom: 20px !important;
 }
 .text-primary, .text-primary:hover, a, a:hover, a:focus, a.text-primary, a.text-primary:hover, a.text-primary:focus {
-    color: #1bbae1;
+    color: #1b1b1b;
 }
 
 .push {

@@ -515,20 +515,20 @@ input[type="text"].form-control, input[type="password"].form-control, input[type
   color: #4a392b;
 }
 .btn-success, .gritter-message.gritter-success {
-  background-color: #CAF7E3;
-  color: #4a392b;
+  background-color: #147a4c;
+  color: #fdfdfd;
 }
 .btn-info, .gritter-message.gritter-info {
-  background-color: #CAE1F7;
-  color: #4a392b;
+  background-color: #71a9df;
+  color: #fdfdfd;
 }
 .btn-warning, .gritter-message.gritter-warning {
   background-color: #F7F3CA;
   color: #4a392b;
 }
 .btn-danger, .gritter-message.gritter-danger {
-  background-color: #F7CACA;
-  color: #4a392b;
+  background-color: #e72a2a;
+  color: #fdfdfd;
 }
 .gritter-message {
   margin: 5%;
